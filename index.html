@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08111f"><title>Elkollen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div><span class="eyebrow">ELKOLLEN</span><h1>Din elpris-dashboard</h1><p>Spotpris, kostnadsestimat och dagens smartaste timmar.</p></div><div class="status"><i id="dot"></i><span id="status">Hämtar priser…</span></div></header>
+<main>
+<section class="controls card">
+<label>Elområde<select id="area"><option>SE1</option><option>SE2</option><option selected>SE3</option><option>SE4</option></select></label>
+<label>Datum<input id="date" type="date"></label>
+<label class="check"><input id="vat" type="checkbox" checked> Visa inkl. 25 % moms</label>
+<label>Förbrukning per månad<input id="usage" type="number" min="0" max="100000" value="1200"><span>kWh</span></label>
+<button id="refresh">Uppdatera</button>
+</section>
+<section class="kpis">
+<article class="card hero"><small>Pris just nu</small><strong id="now">–</strong><span id="nowTime">–</span></article>
+<article class="card"><small>Dagens snitt</small><strong id="avg">–</strong><span>öre/kWh</span></article>
+<article class="card"><small>Billigast</small><strong id="min">–</strong><span id="minTime">–</span></article>
+<article class="card"><small>Dyrast</small><strong id="max">–</strong><span id="maxTime">–</span></article>
+</section>
+<section class="grid">
+<article class="card chartCard"><div class="sectionHead"><div><small>PRISUTVECKLING</small><h2 id="chartTitle">Dagens priser</h2></div><div class="legend"><i></i> öre/kWh</div></div><div class="canvasWrap"><canvas id="chart" aria-label="Diagram över elpriser"></canvas><div id="tip" class="tip"></div></div></article>
+<aside class="card advice"><small>SMART PLANERING</small><h2>Bästa tiderna idag</h2><div id="best"></div><hr><h3>Beräknad spotkostnad</h3><strong id="monthly">–</strong><p>per månad vid jämn förbrukning. Elnät, energiskatt och elhandlarens påslag ingår inte.</p></aside>
+</section>
+<section class="card tableCard"><div class="sectionHead"><div><small>ALLA PRISPERIODER</small><h2>Prislista</h2></div><button id="csv" class="secondary">Ladda ner CSV</button></div><div class="tableWrap"><table><thead><tr><th>Tid</th><th>Spotpris</th><th id="vatHead">Inkl. moms</th><th>Nivå</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+</main>
+<footer>Priser hämtas från <a href="https://www.elprisetjustnu.se" target="_blank" rel="noreferrer">Elpriset just nu</a>. Visade spotpriser är inte din fullständiga elkostnad.</footer>
+<script src="app.js"></script>
+</body></html>
